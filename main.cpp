@@ -4,21 +4,40 @@
 #include<algorithm>
 #define pp pair<char,int>
 using namespace std;
-/***********brute force method to remove duplicates from string*/////////////
+void swapAndReduceSize(int * &arr,int i,int j)
+{
+    int temp=arr[i];
+    arr[i]=arr[j];
+    arr[j]=temp;
+}
+/***********code to check weather two arrays have same set or not*/////////////
 int main()
 {
-    map<char,int> map_;
-    string a;
-    cin>>a;
-    int n=a.size();
-    for(int i=0;i<n;i++)
+    int n,*arr1,*arr2,i,j=0,n2;
+    cin>>n;
+    arr1=new int[n];
+    arr2=new int[n];
+    for(i=0;i<n;i++)
+        cin>>arr1[i];
+    for(i=0;i<n;i++)
+        cin>>arr2[i];
+    i=0;
+    n2=n;
+    for(i=0;i<n;i++)
     {
-        if(map_.find(a[i])==map_.end())
-            map_.insert(pp(a[i],i));
+        for(j=0;j<n2;j++)
+        {
+            if(arr1[i]==arr2[j])
+            {
+                swapAndReduceSize(arr2,j,n2-1);
+                n2--;
+            }
+        }
     }
-    map<char,int>::iterator it=map_.begin();
-    for(;it!=map_.end();it++)
-    {
-         cout<<it->first;
-    }
+    if(n2==0)
+        cout<<"yes";
+    else
+        cout<<"no";
+    delete[] arr1;
+    delete[] arr2;
 }
