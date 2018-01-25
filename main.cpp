@@ -10,33 +10,24 @@ void swapAndReduceSize(int * &arr,int i,int j)
     arr[i]=arr[j];
     arr[j]=temp;
 }
-/***********code to check weather two arrays have same set or not  sorting  method*/////////////
+/***********code to check weather two arrays have same set or not  hashing  method*/////////////
 int main()
-{   map<int,int> map_;
-    int n,*arr1,*arr2,i,flag=1;
+{   vector<pair<int,int>> vector_;
+    map<int,int> map_;
+    int n,a,b;
     cin>>n;
-    arr1=new int[n];
-    arr2=new int[n];
-    for(i=0;i<n;i++)
-        cin>>arr1[i];
-    for(i=0;i<n;i++)
-        cin>>arr2[i];
-    for(i=0;i<n;i++)
-        {
-            map_[arr1[i]]++;
-
-        }
-    for(i=0;i<n;i++)
-        {
-            map_[arr2[i]]--;
-        }
-    for(auto it=map_.begin();it!=map_.end();it++)
+    for(int i=0;i<n;i++)
     {
-        if(it->second!=0)
-            flag=0;
+        cin>>a>>b;
+        map_[a]=b;
+        if(map_[a]==b&&map_[b]==a)
+        {
+            vector_.push_back(make_pair(a,b));
+        }
+
     }
-    if(!flag)
-        cout<<"no";
-    else
-        cout<<"yes";
+    for(auto it=vector_.begin();it!=vector_.end();it++)
+    {
+        cout<<it->first<<" "<<it->second;
+    }
 }
