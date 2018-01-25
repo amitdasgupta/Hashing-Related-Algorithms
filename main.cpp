@@ -10,10 +10,10 @@ void swapAndReduceSize(int * &arr,int i,int j)
     arr[i]=arr[j];
     arr[j]=temp;
 }
-/***********code to check weather two arrays have same set or not  brute  force method*/////////////
+/***********code to check weather two arrays have same set or not  sorting  method*/////////////
 int main()
-{
-    int n,*arr1,*arr2,i,j=0,flag=1;
+{   map<int,int> map_;
+    int n,*arr1,*arr2,i,flag=1;
     cin>>n;
     arr1=new int[n];
     arr2=new int[n];
@@ -21,15 +21,22 @@ int main()
         cin>>arr1[i];
     for(i=0;i<n;i++)
         cin>>arr2[i];
-    sort(arr1,arr1+n);
-    sort(arr2,arr2+n);
-    for(int i=0;i<n;i++)
-        if(arr1[i]!=arr2[i])
+    for(i=0;i<n;i++)
+        {
+            map_[arr1[i]]++;
+
+        }
+    for(i=0;i<n;i++)
+        {
+            map_[arr2[i]]--;
+        }
+    for(auto it=map_.begin();it!=map_.end();it++)
     {
-        flag=0;
+        if(it->second!=0)
+            flag=0;
     }
-    if(flag)
-        cout<<"yes";
-    else
+    if(!flag)
         cout<<"no";
+    else
+        cout<<"yes";
 }
