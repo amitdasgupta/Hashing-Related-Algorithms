@@ -1,47 +1,24 @@
 #include <iostream>
 #include<string>
+#include<map>
 #include<algorithm>
+#define pp pair<char,int>
 using namespace std;
-void printArray(int *arr,int n)
-{
-
-    for(int i=0;i<n;i++)
-        cout<<arr[i]<<" ";
-    cout<<endl;
-}
-/***********sorting method to remove duplicates from string*/////////////
+/***********brute force method to remove duplicates from string*/////////////
 int main()
 {
-
+    map<char,int> map_;
     string a;
-    int n;
     cin>>a;
-    n=a.size();
-    /**********code for sorting the array*/
-    int *arr=new int[n],arr2[1000];
+    int n=a.size();
     for(int i=0;i<n;i++)
     {
-        arr[i]=a[i];
+        if(map_.find(a[i])==map_.end())
+            map_.insert(pp(a[i],i));
     }
-    sort(arr,arr+n);
-    arr2[0]=arr[0];
-    int j=0,i=1;
-    while(i<=n)
+    map<char,int>::iterator it=map_.begin();
+    for(;it!=map_.end();it++)
     {
-        if(arr[i]==arr2[j])
-        {
-            i++;
-        }
-        else
-        {
-            arr2[++j]=arr[i];
-            i++;
-        }
+         cout<<it->first;
     }
-    a.clear();
-    for(int i=j-1;i>=0;i--)
-        a.push_back(char(arr2[i]));
-    cout<<a;
-    delete[] arr;
-
 }
