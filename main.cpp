@@ -10,7 +10,7 @@ void swapAndReduceSize(int * &arr,int i,int j)
     arr[i]=arr[j];
     arr[j]=temp;
 }
-/***********give an algorithm to find first non repeated character in a string brute force*/////////////
+/***********give an algorithm to find first repeated character in a string brute force*/////////////
 int main()
 {
   string s;
@@ -24,7 +24,7 @@ int main()
       {
           j++;
       }
-      if(j==n)
+      if(j!=n)
       {
           cout<<s[i];
           break;
