@@ -10,25 +10,21 @@ void swapAndReduceSize(int * &arr,int i,int j)
     arr[i]=arr[j];
     arr[j]=temp;
 }
-/***********give an algorithm to find first non repeated character in a string*/////////////
+/***********give an algorithm to find first non repeated character in a string brute force*/////////////
 int main()
 {
   string s;
-  map<char,int> map_;
   cin>>s;
   int n=s.size();
-  for(int i=0;i<n;i++)
+  int i=0,j;
+  for(i=0;i<n-1;i++)
   {
-      if(map_[s[i]]!=0)
+      j=i+1;
+      while(j<n&&s[i]!=s[j])
       {
-          map_[s[i]]++;
+          j++;
       }
-      else
-        map_[s[i]]=1;
-  }
-  for(int i=0;i<n;i++)
-  {
-      if(map_[s[i]]==1)
+      if(j==n)
       {
           cout<<s[i];
           break;
