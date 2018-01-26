@@ -10,29 +10,33 @@ void swapAndReduceSize(int * &arr,int i,int j)
     arr[i]=arr[j];
     arr[j]=temp;
 }
-/***********code to find symmetric pairs in given pairs using hashing*/////////////
+/***********give an algorithm to remove specified characters from the given string*/////////////
 int main()
-{   map<int,int> map_;
-    int n,*arr1,*arr2,flag=0,k;
-    cin>>n>>k;
-    arr1=new int[n];
-    arr2=new int[n];
-    for(int i=0;i<n;i++)
-        cin>>arr1[i];
-    for(int i=0;i<n;i++)
-        cin>>arr2[i];
-    for(int i=0;i<n;i++)
-    {
-        map_[arr1[i]]=i;
-    }
-    for(int i=0;i<n;i++)
-    {
-        if(map_.find(k-arr2[i])!=map_.end())
-        {
-            cout<<k-arr2[i]<<" "<<arr2[i];
-            flag=1;
-            break;
-        }
-    }
-
+{
+  int arr[256],i;
+  for(i=0;i<257;i++)
+    arr[i]=0;
+  string s,p;
+  cin>>s>>p;
+  int n=p.size();
+  for(int i=0;i<n;i++)
+  {
+      arr[p[i]]++;
+  }
+  n=s.size();
+  i=0;
+  while(i<n)
+  {
+      if(arr[s[i]]!=0)
+      {
+          /*** add this line if multiple characters are repeated in pattern
+          arr[s[i]]--;*/////
+          s[i]=s[n-1];
+          n--;
+      }
+      else
+        i++;
+  }
+  s.resize(n);
+  cout<<s;
 }
