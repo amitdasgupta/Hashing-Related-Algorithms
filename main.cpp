@@ -10,24 +10,29 @@ void swapAndReduceSize(int * &arr,int i,int j)
     arr[i]=arr[j];
     arr[j]=temp;
 }
-/***********code to check weather two arrays have same set or not  hashing  method*/////////////
+/***********code to find symmetric pairs in given pairs using hashing*/////////////
 int main()
-{   vector<pair<int,int>> vector_;
-    map<int,int> map_;
-    int n,a,b;
-    cin>>n;
+{   map<int,int> map_;
+    int n,*arr1,*arr2,flag=0,k;
+    cin>>n>>k;
+    arr1=new int[n];
+    arr2=new int[n];
+    for(int i=0;i<n;i++)
+        cin>>arr1[i];
+    for(int i=0;i<n;i++)
+        cin>>arr2[i];
     for(int i=0;i<n;i++)
     {
-        cin>>a>>b;
-        map_[a]=b;
-        if(map_[a]==b&&map_[b]==a)
-        {
-            vector_.push_back(make_pair(a,b));
-        }
-
+        map_[arr1[i]]=i;
     }
-    for(auto it=vector_.begin();it!=vector_.end();it++)
+    for(int i=0;i<n;i++)
     {
-        cout<<it->first<<" "<<it->second;
+        if(map_.find(k-arr2[i])!=map_.end())
+        {
+            cout<<k-arr2[i]<<" "<<arr2[i];
+            flag=1;
+            break;
+        }
     }
+
 }
